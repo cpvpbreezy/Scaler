@@ -1,0 +1,59 @@
+// Build for Minecraft 1.21.11 (Mojang mappings). The 26.x build is in mc26/.
+// Code shared by both builds (config, settings screen, scaling logic) is in common/.
+plugins {
+    id 'fabric-loom' version '1.17.20'
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+loom {
+    mixin {
+        defaultRefmapName = "scaler.refmap.json"
+        useLegacyMixinAp = true
+    }
+}
+
+sourceSets {
+    main {
+        java.srcDirs += 'common/src/main/java'
+        resources.srcDirs += 'common/src/main/resources'
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.terraformersmc.com/releases/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive = false }
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 21
+}
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE.txt") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "scaler.title": "Scaler",
+  "scaler.info": "Vanilla GUI scale: %s  -  turn a part on to give it its own GUI scale",
+  "scaler.element.hotbar": "Hotbar",
+  "scaler.element.chat": "Chat",
+  "scaler.element.scoreboard": "Scoreboard",
+  "scaler.element.container": "Chests / Inventory",
+  "scaler.slider": "Scale: %s",
+  "scaler.reset": "Reset All"
+}

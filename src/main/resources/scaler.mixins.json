@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.cpvpbreezy.scaler.mixin",
+  "refmap": "scaler.refmap.json",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ChatComponentMixin",
+    "GuiGraphicsPipMixin",
+    "GuiMixin",
+    "MouseHandlerMixin",
+    "ScreenRenderMixin",
+    "ScreenSizeMixin",
+    "WindowMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

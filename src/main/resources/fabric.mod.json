@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "scaler",
+  "version": "${version}",
+  "name": "Scaler",
+  "description": "Give the hotbar, chat, scoreboard and chest/inventory screens their own GUI scale, set in steps of 0.01 from Mod Menu.",
+  "authors": ["cpvpbreezy"],
+  "contact": {
+    "sources": "https://github.com/cpvpbreezy/Scaler",
+    "issues": "https://github.com/cpvpbreezy/Scaler/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/scaler/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "modmenu": ["net.cpvpbreezy.scaler.ScalerModMenu"]
+  },
+  "mixins": ["scaler.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
