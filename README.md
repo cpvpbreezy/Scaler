@@ -10,6 +10,7 @@ vanilla scale for everything.
 | **Hotbar** | Hotbar plus hearts, hunger, armor, air, XP bar and the held item name |
 | **Chat** | Chat messages and the chat box (clicking/hovering messages keeps working) |
 | **Scoreboard** | The sidebar scoreboard |
+| **Crosshair** | The vanilla crosshair in the middle of the screen (and the attack indicator under it). Crosshair mods that draw their own crosshair (like Custom Crosshair Mod) keep their own size setting. |
 | **Chests / Inventory** | Every container screen: inventory, creative, chests, furnaces, crafting... including tooltips and the player preview |
 
 Each part can be turned on separately. When it's on, it's drawn at the GUI scale you set (for

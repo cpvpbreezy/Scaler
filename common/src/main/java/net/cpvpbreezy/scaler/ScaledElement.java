@@ -7,6 +7,7 @@ public enum ScaledElement {
     HOTBAR("hotbar", 0.5f, 1.0f),
     CHAT("chat", 0f, 0f),
     SCOREBOARD("scoreboard", 1.0f, 0.5f),
+    CROSSHAIR("crosshair", 0.5f, 0.5f),
     CONTAINER("container", 0f, 0f);
 
     public final String key;

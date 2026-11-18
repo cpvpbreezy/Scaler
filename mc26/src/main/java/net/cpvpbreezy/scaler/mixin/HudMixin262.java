@@ -2,6 +2,8 @@ package net.cpvpbreezy.scaler.mixin;
 
 import net.cpvpbreezy.scaler.ScaleContext;
 import net.cpvpbreezy.scaler.ScaledElement;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.world.scores.Objective;
@@ -12,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Hotbar (with hearts, food, armor, XP bar) and scoreboard sidebar at their own scale.
+ * Hotbar (with hearts, food, armor, XP bar), scoreboard sidebar and crosshair at their own scale.
  * Minecraft 26.2+ keeps the HUD in {@code Hud}; 26.1.x had it in {@code Gui} (see {@link HudMixin261}).
  * {@link net.cpvpbreezy.scaler.ScalerMixinPlugin} applies only the one that matches the game.
  */
@@ -37,5 +39,16 @@ public abstract class HudMixin262 {
     @Inject(method = "displayScoreboardSidebar", at = @At("RETURN"))
     private void scaler$scoreEnd(GuiGraphicsExtractor g, Objective o, CallbackInfo ci) {
         ScaleContext.end(g.pose());
+    }
+
+    /** Wraps the whole call because crosshair mods often cancel it at HEAD; always undoes the scale. */
+    @WrapMethod(method = "extractCrosshair")
+    private void scaler$crosshair(GuiGraphicsExtractor g, DeltaTracker d, Operation<Void> original) {
+        ScaleContext.begin(g.pose(), ScaledElement.CROSSHAIR);
+        try {
+            original.call(g, d);
+        } finally {
+            ScaleContext.end(g.pose());
+        }
     }
 }

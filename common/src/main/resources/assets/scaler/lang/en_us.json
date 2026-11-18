@@ -4,6 +4,7 @@
   "scaler.element.hotbar": "Hotbar",
   "scaler.element.chat": "Chat",
   "scaler.element.scoreboard": "Scoreboard",
+  "scaler.element.crosshair": "Crosshair",
   "scaler.element.container": "Chests / Inventory",
   "scaler.slider": "Scale: %s",
   "scaler.reset": "Reset All"
